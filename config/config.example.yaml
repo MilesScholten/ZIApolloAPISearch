@@ -1,0 +1,39 @@
+# Sample configuration for CLI usage
+zoominfo:
+  base_url: "https://api.zoominfo.com"
+  company_by_id_path: "/company/detail"          # GET ?companyId=
+  company_lookup_path: "/lookup/company"          # GET ?domain=
+  search_by_name_path: "/search/company"          # POST { companyName: "..." }
+  api_key_env: "ZOOMINFO_API_KEY"
+
+apollo:
+  base_url: "https://api.apollo.io/v1"
+  company_enrich_by_domain_path: "/companies/enrich"     # POST { domain: "..." }
+  company_enrich_by_id_path: "/companies/enrich"         # POST { id: "..." } (varies by plan)
+  company_search_by_name_path: "/mixed_companies/search" # POST { q_organization_name: "..." }
+  company_search_by_salesforce_id_path: "/companies/search" # POST { filters: { salesforce_id: "..." } }
+  api_key_env: "APOLLO_API_KEY"
+
+rate_limits:
+  zoominfo_per_min: 50
+  apollo_per_min: 50
+
+mapping:
+  zoominfo_id: null
+  apollo_id: null
+  salesforce_id: null
+  name: null
+  website: null
+
+output:
+  include_input_columns: true
+  prefix_zoominfo: "zi"
+  prefix_apollo: "ap"
+  add_vendor_json_columns: false
+
+retries:
+  max_attempts: 5
+  base_delay_seconds: 1.0
+
+http:
+  timeout_seconds: 30
