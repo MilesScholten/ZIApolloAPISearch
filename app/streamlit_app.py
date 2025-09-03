@@ -14,7 +14,6 @@ SRC = os.path.join(ROOT, 'src')
 if SRC not in sys.path:
     sys.path.insert(0, SRC)
 
-from __future__ import annotations
 import os, time, json, pandas as pd, streamlit as st
 from typing import Dict, Any, Optional, List
 from enrichment.utils import rate_limiter, sanitize_domain
